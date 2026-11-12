@@ -98,6 +98,20 @@ modificó una fila. Con RLS, un update sin permiso no lanza error, solo afecta
 guardado. Dejé políticas públicas de update/delete por ser una tarea; en
 producción usaría autenticación.
 
-**Desafío y solución:** [anota aquí lo que te pasó. Ejemplo: "Al guardar no
-cambiaba nada y no daba error. Era RLS: faltaban las políticas de update y
-delete. Las agregué en el SQL Editor."]
+## Paso 7: Home, navegación y estados de carga/error
+
+**Prompt principal:**
+> "Crea la home de la app con un resumen de cuántos juegos hay por estado,
+> un menú de navegación en el layout con el enlace activo resaltado, y los
+> archivos loading.tsx, error.tsx y not-found.tsx de App Router."
+
+**Iteración:** la IA generó los archivos especiales y el resumen. Pedí que la
+carga de /juegos fuera un esqueleto con la forma de las tarjetas en vez de un
+simple "Cargando...", y probé cada pantalla rompiendo la app a propósito
+(retraso falso de 2 segundos y nombre de tabla incorrecto). [anota tus cambios]
+
+**Decisión técnica:** el menú es un Client Component pequeño (necesita
+usePathname) y vive en el layout, así el resto del layout sigue en el
+servidor. La home cuenta en JavaScript porque son pocos datos; con miles de
+filas pasaría el conteo a la base de datos con count.
+

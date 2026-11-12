@@ -4,8 +4,7 @@ import GamesList from "@/components/Gamelist";
 import type { Game } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
-
-// Server Component: se ejecuta en el servidor, antes de llegar al navegador
+    // Server Component: se ejecuta en el servidor, antes de llegar al navegador
 export default async function JuegosPage() {
   const { data, error } = await supabase
     .from("games")
