@@ -63,3 +63,19 @@ cliente. Así la clave no se expone y el cliente solo se encarga de la
 interacción. Moví components/ a src/components/ (fuera de app/) para que app/
 solo tenga rutas.
 
+## Paso 5: Formulario para agregar juegos
+
+**Prompt principal:**
+> "Crea la ruta /juegos/nuevo con un formulario (Client Component) que guarde
+> un juego en Supabase con título, plataforma, estado, progreso y notas.
+> Que muestre estado de guardado y errores, y vuelva a la lista al terminar."
+
+**Iteración:** la IA generó el formulario con un useState por campo. Lo revisé
+y pedí/ajusté que el progreso quede en 100 si el estado es "platinado", y que
+la fecha de platino use la fecha local y no la de UTC. [anota tus cambios]
+
+**Decisión técnica:** la página es Server Component y el formulario un Client
+Component aparte, para mantener el JS del cliente mínimo. Agregué
+`export const dynamic = "force-dynamic"` en /juegos para que en producción los
+juegos nuevos aparezcan en cada visita y no se quede la versión del build.
+
