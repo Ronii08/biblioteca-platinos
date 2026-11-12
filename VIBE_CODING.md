@@ -1,8 +1,48 @@
 # Proceso de Vibe Coding
 
-## Decisión inicial
-- Tema: biblioteca de juegos para platinar (estados: pendiente, en proceso, platinado).
-- Stack: Next.js 16 (App Router), TypeScript, Tailwind, Supabase, Vercel.
-- Prompt inicial a la IA: "Ayúdame a diseñar la arquitectura de una app Next.js 16
-  para llevar el control de juegos que quiero platinar..."
-- Decisión: rutas /, /juegos, /juegos/[id], /juegos/nuevo.
+## Paso 1: Arquitectura y planificación
+
+**Prompt principal:**
+> "Quiero hacer una app en Next.js 16 para llevar el control de juegos que
+> quiero platinar, con estados pendiente, en proceso y platinado. Necesito
+> mínimo 4 rutas, Server y Client Components, y Supabase. Ayúdame a diseñar
+> la arquitectura antes de generar código."
+
+**Iteración:** la IA propuso 4 rutas (`/`, `/juegos`, `/juegos/[id]`,
+`/juegos/nuevo`) y una tabla `games`. Acepté la estructura tal cual.
+
+**Decisión técnica:** separar `components/` (piezas reutilizables) y `lib/`
+(conexión a la base de datos) dentro de `src/`, para poder cambiar de base de
+datos tocando un solo lugar.
+
+---
+
+## Paso 2: Creación del proyecto y repositorio
+
+**Prompt:** "¿Qué opciones elijo en create-next-app para cumplir la rúbrica?"
+
+**Decisión técnica:** TypeScript, ESLint, Tailwind, carpeta `src/` y App Router.
+Verifiqué en `package.json` que la versión de Next.js fuera 16.
+
+**Desafío y solución:** al hacer commit de este archivo, Git me dijo que el
+archivo estaba "untracked". Había olvidado `git add`: `commit` solo guarda
+lo que ya está agregado. Además lo nombré `vibe_CODING.md` en vez de
+`VIBE_CODING.md`; lo renombré antes del commit para cumplir la rúbrica.
+
+---
+
+## Paso 3: Conexión con Supabase
+
+**Prompt:** "Dame el SQL para crear la tabla games con estados y progreso, y
+cómo conectarla a Next.js con variables de entorno."
+
+**Iteración:** [aquí anota si cambiaste algo, por ejemplo columnas que
+agregaste o quitaste]
+
+**Decisiones técnicas:**
+- Usé un `check` en `status` y `progress` para que la base de datos rechace
+  valores inválidos aunque el código falle.
+- Activé RLS con lectura e inserción públicas. Es suficiente para esta tarea;
+  en producción real agregaría login y reglas por usuario.
+- Claves en `.env.local` (ignorado por Git) y un `.env.example` vacío que
+  documenta las variables necesarias.
