@@ -4,7 +4,7 @@ Aplicación web para llevar el control de los videojuegos que quiero platinar,
 con tres estados: **pendiente**, **en proceso** y **platinado**.
 Proyecto desarrollado con la metodología de Vibe Coding usando Claude como copiloto.
 
-🔗 **Demo en producción:** https://TU-APP.vercel.app
+🔗 **Demo en producción:** https://biblioteca-platinos-ie4y.vercel.app
 
 ## Funcionalidades
 
