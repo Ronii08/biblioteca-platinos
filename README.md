@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏆 Biblioteca de Platinos
 
-## Getting Started
+Aplicación web para llevar el control de los videojuegos que quiero platinar,
+con tres estados: **pendiente**, **en proceso** y **platinado**.
+Proyecto desarrollado con la metodología de Vibe Coding usando Claude como copiloto.
 
-First, run the development server:
+🔗 **Demo en producción:** https://TU-APP.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Resumen en la home con el conteo de juegos por estado.
+- Lista de juegos con buscador por título y filtro por estado.
+- Agregar juegos desde un formulario.
+- Detalle de cada juego, con edición de estado/progreso y borrado.
+- Pantallas de carga, error y 404.
+- Diseño responsive (móvil y escritorio).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tecnologías
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Next.js 16 (App Router) · TypeScript · Tailwind CSS · Supabase · Vercel
 
-## Learn More
+## Rutas
 
-To learn more about Next.js, take a look at the following resources:
+| Ruta | Descripción |
+|---|---|
+| `/` | Resumen de la biblioteca |
+| `/juegos` | Lista con buscador y filtro |
+| `/juegos/nuevo` | Formulario para agregar un juego |
+| `/juegos/[id]` | Detalle, edición y borrado |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalación
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clona el repositorio e instala las dependencias:
+   ```bash
+   git clone https://github.com/Ronii08/biblioteca-platinos.git
+   cd biblioteca-platinos
+   npm install
+   ```
+2. Crea un proyecto gratuito en [Supabase](https://supabase.com) y ejecuta el
+   contenido de `supabase/schema.sql` en el **SQL Editor**.
+3. Copia `.env.example` a `.env.local` y completa los valores
+   (Supabase → Project Settings → API):
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=...
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+   ```
+4. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+   Abre http://localhost:3000.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev`: servidor de desarrollo
+- `npm run build`: build de producción
+- `npm run lint`: revisión de código
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Proceso de desarrollo
+
+El registro de prompts, iteraciones, decisiones técnicas y desafíos está en
+[VIBE_CODING.md](./VIBE_CODING.md).
+
+## Limitaciones conocidas
+
+Las políticas de Supabase son públicas (cualquiera puede leer, crear, editar
+y borrar) por tratarse de una actividad académica. En producción real se
+agregaría autenticación y reglas por usuario.
