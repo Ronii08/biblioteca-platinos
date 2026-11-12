@@ -79,3 +79,25 @@ Component aparte, para mantener el JS del cliente mínimo. Agregué
 `export const dynamic = "force-dynamic"` en /juegos para que en producción los
 juegos nuevos aparezcan en cada visita y no se quede la versión del build.
 
+## Paso 6: Detalle del juego, edición y borrado
+
+**Prompt principal:**
+> "Crea la ruta dinámica /juegos/[id] en Next.js 16 que muestre el detalle de
+> un juego desde Supabase y permita cambiar estado y progreso, o borrarlo.
+> Maneja el caso de id inexistente con notFound()."
+
+**Iteración:** la IA propuso la página de servidor más un Client Component
+para editar. Revisé el código y ajusté tres cosas: usar `await params`
+(en Next 16 es una promesa), validar el formato del uuid antes de consultar y
+formatear la fecha de platino con hora local para que no se corra un día.
+[anota tus cambios]
+
+**Decisión técnica:** el editor verifica con `.select()` que la operación sí
+modificó una fila. Con RLS, un update sin permiso no lanza error, solo afecta
+0 filas, así que sin esa verificación la app diría "guardado" sin haber
+guardado. Dejé políticas públicas de update/delete por ser una tarea; en
+producción usaría autenticación.
+
+**Desafío y solución:** [anota aquí lo que te pasó. Ejemplo: "Al guardar no
+cambiaba nada y no daba error. Era RLS: faltaban las políticas de update y
+delete. Las agregué en el SQL Editor."]
