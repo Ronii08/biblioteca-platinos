@@ -46,3 +46,20 @@ agregaste o quitaste]
   en producción real agregaría login y reglas por usuario.
 - Claves en `.env.local` (ignorado por Git) y un `.env.example` vacío que
   documenta las variables necesarias.
+
+## Paso 4: Lista de juegos con buscador y filtro
+
+**Prompt principal:**
+> "Crea una página /juegos en Next.js 16 que lea los juegos de Supabase en un
+> Server Component y los muestre en una lista con buscador por título y filtro
+> por estado, usando un Client Component con useState. Con Tailwind y responsive."
+
+**Iteración:** la IA separó la página (servidor) de la lista (cliente) y creó
+componentes pequeños (GameCard, StatusBadge). Dejé las portadas para más
+adelante para no complicar este paso. [anota aquí algo que hayas cambiado tú]
+
+**Decisión técnica:** los datos se piden en el servidor y se pasan por props al
+cliente. Así la clave no se expone y el cliente solo se encarga de la
+interacción. Moví components/ a src/components/ (fuera de app/) para que app/
+solo tenga rutas.
+
